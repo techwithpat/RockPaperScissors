@@ -1,0 +1,31 @@
+﻿@inject Choices choices 
+
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-6 text-center text-uppercase"><h1>You : @playerScore</h1></div>
+        <div class="col-6 text-center text-uppercase"><h1>Computer :@computerScore</h1></div>
+    </div>
+    <div class="row mt-3" style="height:200px;">
+        <div class="col-6 text-center choosen-image">
+            @playerChoiceImage
+        </div>
+        <div class="col-6 text-center choosen-image">
+            @computerChoiceImage
+        </div>
+    </div>
+    <div class="text-center mt-3" style="height:40px;">
+        <h3>@message</h3>
+    </div>
+    <div class="row mt-3">
+        @foreach(var i in Enumerable.Range(0,3))
+        {
+            var choice = i;
+            <div class="col-4 text-center image-to-choose" @onclick="(()=> OnPlayerMadeChoice(choice))">
+                @choices[i]
+            </div>
+        }
+    </div>
+    <div class="text-center mt-5">
+        <button class="btn btn-primary" @onclick="Reset">Reset</button>
+    </div>
+</div>
